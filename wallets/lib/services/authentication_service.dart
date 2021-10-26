@@ -1,3 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:wallets/locator.dart';
+
 abstract class AuthenticationService {
   Future<void> signInWithEmailAndPassword(
       {required String email, required String password});
@@ -8,15 +11,25 @@ abstract class AuthenticationService {
       required String displayName,
       required String confirmedPassword});
 
+  Future<void> sendEmailVerification();
+  Future<void> sendForgotPasswordEmail(String email);
+
+  Future<bool> isUserSignedIn();
+
   factory AuthenticationService() => _AuthenticationService();
 }
 
 class _AuthenticationService implements AuthenticationService {
+  final firebaseAuth = locator<FirebaseAuth>();
+
   @override
   Future<void> signInWithEmailAndPassword(
       {required String email, required String password}) async {
-    // TODO: implement signInWithEmailAndPassword
-    // throw UnimplementedError();
+    if (email.isEmpty) throw ArgumentError("Please provide an email.");
+    if (password.isEmpty) throw ArgumentError("Please provide a password.");
+
+    await firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
   }
 
   @override
@@ -24,7 +37,10 @@ class _AuthenticationService implements AuthenticationService {
       {required String email,
       required String password,
       required String displayName,
-      required String confirmedPassword}) {
+      required String confirmedPassword}) async {
+    if (email.isEmpty) throw ArgumentError("Please provide an email.");
+    if (password.isEmpty) throw ArgumentError("Please provide a password.");
+
     if (displayName.isEmpty)
       throw new ArgumentError("Please provide a display name.");
 
@@ -32,7 +48,25 @@ class _AuthenticationService implements AuthenticationService {
       throw ArgumentError("Please enter matching passwords.");
     }
 
-    // TODO: implement signUpWithEmailAndPassword
-    throw UnimplementedError();
+    await firebaseAuth.createUserWithEmailAndPassword(
+        email: email, password: password);
+    await firebaseAuth.currentUser!.updateDisplayName(displayName);
+  }
+
+  @override
+  Future<bool> isUserSignedIn() async {
+    return firebaseAuth.currentUser != null;
+  }
+
+  @override
+  Future<void> sendEmailVerification() {
+    return firebaseAuth.currentUser!.sendEmailVerification();
+  }
+
+  @override
+  Future<void> sendForgotPasswordEmail(String email) {
+    if (email.isEmpty) throw ArgumentError("Please provide an email.");
+
+    return firebaseAuth.sendPasswordResetEmail(email: email);
   }
 }

@@ -39,7 +39,7 @@ class SignInView extends StatelessWidget with $SignInView {
                 verticalSpace(30),
                 if (model.hasError)
                   Text(
-                    model.error(model),
+                    "${model.error(model)}",
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2

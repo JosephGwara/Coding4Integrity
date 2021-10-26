@@ -3,8 +3,9 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:wallets/locator.dart';
 import 'package:wallets/routes.dart';
 
-void main() async {
-  setUpLocator();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setUpLocator();
   runApp(WalletsApp());
 }
 
@@ -14,7 +15,7 @@ class WalletsApp extends StatelessWidget {
     return MaterialApp(
       title: 'Wallets App',
       navigatorKey: StackedService.navigatorKey,
-      initialRoute: Routes.signInView,
+      initialRoute: Routes.startupView,
       onGenerateRoute: generateRoute,
     );
   }
