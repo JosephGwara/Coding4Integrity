@@ -15,6 +15,7 @@ abstract class AuthenticationService {
   Future<void> sendForgotPasswordEmail(String email);
 
   Future<bool> isUserSignedIn();
+  String getCurrentUserId();
 
   factory AuthenticationService() => _AuthenticationService();
 }
@@ -68,5 +69,11 @@ class _AuthenticationService implements AuthenticationService {
     if (email.isEmpty) throw ArgumentError("Please provide an email.");
 
     return firebaseAuth.sendPasswordResetEmail(email: email);
+  }
+
+  @override
+  String getCurrentUserId() {
+    if (firebaseAuth.currentUser == null) throw "No user signed in.";
+    return firebaseAuth.currentUser!.uid;
   }
 }
