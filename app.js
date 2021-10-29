@@ -3,10 +3,10 @@ const app = express();
 const postRoute = require('./routes/posts');
 
 
-
+//middleware
 app.use('/posts',postRoute);
 
-
+//Home route
 app.get('/',(req,res) => {
 
     res.send('We are running');
