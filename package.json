@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "The backend for the Coding4Integrity application",
+  "main": "createAccount.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Joseph Gwara",
+  "license": "ISC",
+  "dependencies": {
+    "@celo-tools/use-contractkit": "^1.3.0",
+    "@celo/contractkit": "^1.3.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14",
+    "web3": "^1.6.0"
+  }
+}
