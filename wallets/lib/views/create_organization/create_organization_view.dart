@@ -7,7 +7,8 @@ import 'package:wallets/views/create_organization/create_organization_view.form.
 import 'package:wallets/views/create_organization/create_organization_viewmodel.dart';
 
 @FormView(fields: [
-  FormTextField(name: 'organizatioName', initialValue: ""),
+  FormTextField(name: 'organizationName', initialValue: ""),
+  FormTextField(name: 'entepriseNumber', initialValue: ""),
 ])
 class CreateOrganizationView extends StatelessWidget
     with $CreateOrganizationView {
@@ -38,9 +39,16 @@ class CreateOrganizationView extends StatelessWidget
                 verticalSpace(20),
                 TextField(
                   enabled: !model.isCreatingOrganization,
-                  controller: organizatioNameController,
+                  controller: organizationNameController,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(hintText: "Organization Name"),
+                ),
+                verticalSpace(20),
+                TextField(
+                  enabled: !model.isCreatingOrganization,
+                  controller: entepriseNumberController,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(hintText: "Enteprise Number"),
                 ),
                 verticalSpace(30),
                 ElevatedButton(

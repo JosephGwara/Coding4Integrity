@@ -25,6 +25,7 @@ _$_Organization _$$_OrganizationFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       ownerId: json['ownerId'] as String,
       name: json['name'] as String,
+      entepriseNumber: json['entepriseNumber'] as String,
     );
 
 Map<String, dynamic> _$$_OrganizationToJson(_$_Organization instance) =>
@@ -32,4 +33,5 @@ Map<String, dynamic> _$$_OrganizationToJson(_$_Organization instance) =>
       'id': instance.id,
       'ownerId': instance.ownerId,
       'name': instance.name,
+      'entepriseNumber': instance.entepriseNumber,
     };

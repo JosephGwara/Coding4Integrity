@@ -22,6 +22,7 @@ class Organization with _$Organization {
     required String id,
     required String ownerId,
     required String name,
+    required String entepriseNumber,
   }) = _Organization;
 
   factory Organization.fromJson(Map<String, dynamic> json) =>

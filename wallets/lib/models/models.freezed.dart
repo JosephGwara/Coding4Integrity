@@ -237,11 +237,15 @@ class _$OrganizationTearOff {
   const _$OrganizationTearOff();
 
   _Organization call(
-      {required String id, required String ownerId, required String name}) {
+      {required String id,
+      required String ownerId,
+      required String name,
+      required String entepriseNumber}) {
     return _Organization(
       id: id,
       ownerId: ownerId,
       name: name,
+      entepriseNumber: entepriseNumber,
     );
   }
 
@@ -258,6 +262,7 @@ mixin _$Organization {
   String get id => throw _privateConstructorUsedError;
   String get ownerId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get entepriseNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -270,7 +275,7 @@ abstract class $OrganizationCopyWith<$Res> {
   factory $OrganizationCopyWith(
           Organization value, $Res Function(Organization) then) =
       _$OrganizationCopyWithImpl<$Res>;
-  $Res call({String id, String ownerId, String name});
+  $Res call({String id, String ownerId, String name, String entepriseNumber});
 }
 
 /// @nodoc
@@ -286,6 +291,7 @@ class _$OrganizationCopyWithImpl<$Res> implements $OrganizationCopyWith<$Res> {
     Object? id = freezed,
     Object? ownerId = freezed,
     Object? name = freezed,
+    Object? entepriseNumber = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -300,6 +306,10 @@ class _$OrganizationCopyWithImpl<$Res> implements $OrganizationCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      entepriseNumber: entepriseNumber == freezed
+          ? _value.entepriseNumber
+          : entepriseNumber // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -311,7 +321,7 @@ abstract class _$OrganizationCopyWith<$Res>
           _Organization value, $Res Function(_Organization) then) =
       __$OrganizationCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String ownerId, String name});
+  $Res call({String id, String ownerId, String name, String entepriseNumber});
 }
 
 /// @nodoc
@@ -329,6 +339,7 @@ class __$OrganizationCopyWithImpl<$Res> extends _$OrganizationCopyWithImpl<$Res>
     Object? id = freezed,
     Object? ownerId = freezed,
     Object? name = freezed,
+    Object? entepriseNumber = freezed,
   }) {
     return _then(_Organization(
       id: id == freezed
@@ -343,6 +354,10 @@ class __$OrganizationCopyWithImpl<$Res> extends _$OrganizationCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      entepriseNumber: entepriseNumber == freezed
+          ? _value.entepriseNumber
+          : entepriseNumber // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -351,7 +366,10 @@ class __$OrganizationCopyWithImpl<$Res> extends _$OrganizationCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Organization with DiagnosticableTreeMixin implements _Organization {
   _$_Organization(
-      {required this.id, required this.ownerId, required this.name});
+      {required this.id,
+      required this.ownerId,
+      required this.name,
+      required this.entepriseNumber});
 
   factory _$_Organization.fromJson(Map<String, dynamic> json) =>
       _$$_OrganizationFromJson(json);
@@ -362,10 +380,12 @@ class _$_Organization with DiagnosticableTreeMixin implements _Organization {
   final String ownerId;
   @override
   final String name;
+  @override
+  final String entepriseNumber;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Organization(id: $id, ownerId: $ownerId, name: $name)';
+    return 'Organization(id: $id, ownerId: $ownerId, name: $name, entepriseNumber: $entepriseNumber)';
   }
 
   @override
@@ -375,7 +395,8 @@ class _$_Organization with DiagnosticableTreeMixin implements _Organization {
       ..add(DiagnosticsProperty('type', 'Organization'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('ownerId', ownerId))
-      ..add(DiagnosticsProperty('name', name));
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('entepriseNumber', entepriseNumber));
   }
 
   @override
@@ -385,11 +406,14 @@ class _$_Organization with DiagnosticableTreeMixin implements _Organization {
             other is _Organization &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.ownerId, ownerId) || other.ownerId == ownerId) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.entepriseNumber, entepriseNumber) ||
+                other.entepriseNumber == entepriseNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, ownerId, name);
+  int get hashCode =>
+      Object.hash(runtimeType, id, ownerId, name, entepriseNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -406,7 +430,8 @@ abstract class _Organization implements Organization {
   factory _Organization(
       {required String id,
       required String ownerId,
-      required String name}) = _$_Organization;
+      required String name,
+      required String entepriseNumber}) = _$_Organization;
 
   factory _Organization.fromJson(Map<String, dynamic> json) =
       _$_Organization.fromJson;
@@ -417,6 +442,8 @@ abstract class _Organization implements Organization {
   String get ownerId;
   @override
   String get name;
+  @override
+  String get entepriseNumber;
   @override
   @JsonKey(ignore: true)
   _$OrganizationCopyWith<_Organization> get copyWith =>

@@ -5,7 +5,8 @@ import 'package:wallets/models/models.dart';
 import 'package:wallets/services/authentication_service.dart';
 
 abstract class OrganizationsService {
-  Future<Organization> createOrganization({required String withName});
+  Future<Organization> createOrganization(
+      {required String withName, required String enterpiseNumber});
   Future<void> deleteOrganizationWithId(String organizationId);
   Future<List<Organization>> listCurrentUserOrganizations();
 
@@ -17,12 +18,20 @@ class _OrganizationsService implements OrganizationsService {
   final authenticationService = locator<AuthenticationService>();
 
   @override
-  Future<Organization> createOrganization({required String withName}) async {
+  Future<Organization> createOrganization(
+      {required String withName, required String enterpiseNumber}) async {
+    if (withName.isEmpty)
+      throw ArgumentError("Organization name cannot be empty.");
+
+    if (enterpiseNumber.isEmpty)
+      throw new ArgumentError("Enteprise Number cannot be empty.");
+
     final ref = firestore.collection(ksOrganizationsCollection).doc();
     final organization = Organization(
       id: ref.id,
       ownerId: authenticationService.getCurrentUserId(),
       name: withName,
+      entepriseNumber: enterpiseNumber,
     );
 
     await ref.set(organization.toJson());

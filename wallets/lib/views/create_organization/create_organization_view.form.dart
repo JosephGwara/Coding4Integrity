@@ -9,24 +9,30 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-const String OrganizatioNameValueKey = 'organizatioName';
+const String OrganizationNameValueKey = 'organizationName';
+const String EntepriseNumberValueKey = 'entepriseNumber';
 
 mixin $CreateOrganizationView on StatelessWidget {
-  final TextEditingController organizatioNameController =
+  final TextEditingController organizationNameController =
       TextEditingController(text: '');
-  final FocusNode organizatioNameFocusNode = FocusNode();
+  final TextEditingController entepriseNumberController =
+      TextEditingController(text: '');
+  final FocusNode organizationNameFocusNode = FocusNode();
+  final FocusNode entepriseNumberFocusNode = FocusNode();
 
   /// Registers a listener on every generated controller that calls [model.setData()]
   /// with the latest textController values
   void listenToFormUpdated(FormViewModel model) {
-    organizatioNameController.addListener(() => _updateFormData(model));
+    organizationNameController.addListener(() => _updateFormData(model));
+    entepriseNumberController.addListener(() => _updateFormData(model));
   }
 
   /// Updates the formData on the FormViewModel
   void _updateFormData(FormViewModel model) => model.setData(
         model.formValueMap
           ..addAll({
-            OrganizatioNameValueKey: organizatioNameController.text,
+            OrganizationNameValueKey: organizationNameController.text,
+            EntepriseNumberValueKey: entepriseNumberController.text,
           }),
       );
 
@@ -34,17 +40,23 @@ mixin $CreateOrganizationView on StatelessWidget {
   void disposeForm() {
     // The dispose function for a TextEditingController sets all listeners to null
 
-    organizatioNameController.dispose();
-    organizatioNameFocusNode.dispose();
+    organizationNameController.dispose();
+    organizationNameFocusNode.dispose();
+    entepriseNumberController.dispose();
+    entepriseNumberFocusNode.dispose();
   }
 }
 
 extension ValueProperties on FormViewModel {
-  String? get organizatioNameValue =>
-      this.formValueMap[OrganizatioNameValueKey];
+  String? get organizationNameValue =>
+      this.formValueMap[OrganizationNameValueKey];
+  String? get entepriseNumberValue =>
+      this.formValueMap[EntepriseNumberValueKey];
 
-  bool get hasOrganizatioName =>
-      this.formValueMap.containsKey(OrganizatioNameValueKey);
+  bool get hasOrganizationName =>
+      this.formValueMap.containsKey(OrganizationNameValueKey);
+  bool get hasEntepriseNumber =>
+      this.formValueMap.containsKey(EntepriseNumberValueKey);
 }
 
 extension Methods on FormViewModel {}

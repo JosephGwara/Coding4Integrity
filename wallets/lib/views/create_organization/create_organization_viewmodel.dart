@@ -1,7 +1,9 @@
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:wallets/locator.dart';
+import 'package:wallets/models/models.dart';
 import 'package:wallets/services/organizations_service.dart';
+import 'package:wallets/views/create_organization/create_organization_view.form.dart';
 
 abstract class CreateOrganizationViewModel extends FormViewModel {
   bool get isCreatingOrganization;
@@ -17,11 +19,16 @@ class _CreateOrganizationViewModel extends CreateOrganizationViewModel {
 
   @override
   Future<void> createOrganization() async {
-    // TODO: implement createOrganization
+    final run = () async {
+      final organization = await organizationsService.createOrganization(
+        withName: organizationNameValue ?? "",
+        enterpiseNumber: entepriseNumberValue ?? "",
+      );
 
-    final organization =
-        await organizationsService.createOrganization(withName: "");
-    navigationService.back(result: organization);
+      navigationService.back(result: organization);
+    };
+
+    return runBusyFuture(run());
   }
 
   @override
