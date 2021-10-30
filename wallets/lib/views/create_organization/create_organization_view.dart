@@ -65,7 +65,7 @@ class CreateOrganizationView extends StatelessWidget
                           child: CircularProgressIndicator(),
                         )
                       : Text(
-                          "Create Organization",
+                          "Add Organization",
                           style: TextStyle(fontSize: 20),
                         ),
                 )

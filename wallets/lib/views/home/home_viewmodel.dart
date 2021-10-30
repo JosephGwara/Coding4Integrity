@@ -27,7 +27,7 @@ class _HomeViewModel extends HomeViewModel {
   @override
   Future<void> init() async {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      navigationService.replaceWith(Routes.createOrganizationView);
+      navigationService.replaceWith(Routes.selectOrganizationView);
     });
   }
 
