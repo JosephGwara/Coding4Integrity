@@ -4,8 +4,10 @@ import 'package:wallets/locator.dart';
 import 'package:wallets/models/models.dart';
 import 'package:wallets/routes.dart';
 import 'package:wallets/services/organizations_service.dart';
+import 'package:wallets/shared_ui/listing_view.dart';
 
-abstract class SelectOrganizationViewModel extends BaseViewModel {
+abstract class SelectOrganizationViewModel extends BaseViewModel
+    implements ListingViewModel {
   List<Organization> get organizations;
   Future<void> fetchOrganizations();
   Future<void> createNewOrganization();
@@ -39,5 +41,18 @@ class _SelectOrganizationViewModel extends SelectOrganizationViewModel {
   @override
   void returnOrganization(Organization selectedOrganization) {
     navigationService.back(result: selectedOrganization);
+  }
+
+  @override
+  Future<void> addNewItem() {
+    return createNewOrganization();
+  }
+
+  @override
+  bool get hasItems => organizations.isNotEmpty;
+
+  @override
+  Future<void> retryFetch() {
+    return fetchOrganizations();
   }
 }
