@@ -1,7 +1,6 @@
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:wallets/locator.dart';
-import 'package:wallets/models/models.dart';
 import 'package:wallets/services/organizations_service.dart';
 import 'package:wallets/views/create_organization/create_organization_view.form.dart';
 

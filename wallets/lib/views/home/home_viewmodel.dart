@@ -1,43 +1,65 @@
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:wallets/locator.dart';
 import 'package:wallets/models/models.dart';
 import 'package:wallets/routes.dart';
+import 'package:wallets/services/wallets_service.dart';
+import 'package:wallets/shared_ui/listing_view.dart';
 
-abstract class HomeViewModel extends BaseViewModel {
-  List<Wallet> get wallets;
+abstract class HomeViewModel extends BaseViewModel implements ListingViewModel {
+  List<DisplayableWallet> get wallets;
 
   Future<void> init();
   Future<void> createNewWallet();
-  Future<void> openWallet(Wallet wallet);
+  Future<void> openWallet(DisplayableWallet wallet);
 
   static makeInstance() => _HomeViewModel();
 }
 
 class _HomeViewModel extends HomeViewModel {
   final navigationService = locator<NavigationService>();
+  final walletsService = locator<WalletsService>();
 
   @override
-  Future<void> createNewWallet() {
-    // TODO: implement createNewWallet
-    throw UnimplementedError();
+  List<DisplayableWallet> wallets = [];
+
+  @override
+  Future<void> createNewWallet() async {
+    final organization =
+        await navigationService.navigateTo(Routes.selectOrganizationView);
+
+    if (organization != null) {
+      await navigationService.navigateTo(
+        Routes.createWalletView,
+        arguments: organization,
+      );
+    }
   }
 
   @override
-  Future<void> init() async {
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
-      navigationService.replaceWith(Routes.selectOrganizationView);
-    });
+  Future<void> init() {
+    return _fetchWallets();
   }
 
   @override
-  Future<void> openWallet(Wallet wallet) {
+  Future<void> openWallet(DisplayableWallet wallet) async {
     // TODO: implement openWallet
-    throw UnimplementedError();
+  }
+
+  Future<void> _fetchWallets() async {
+    wallets = await runBusyFuture(walletsService.listCurrentUserWallets());
   }
 
   @override
-  // TODO: implement wallets
-  List<Wallet> get wallets => throw UnimplementedError();
+  Future<void> addNewItem() {
+    return createNewWallet();
+  }
+
+  @override
+  bool get hasItems => wallets.isNotEmpty;
+
+  @override
+  Future<void> retryFetch() {
+    return _fetchWallets();
+  }
 }

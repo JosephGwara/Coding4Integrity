@@ -35,50 +35,48 @@ class ListingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: RenderOnBoolean(
-        boolean: model.isBusy,
+    return RenderOnBoolean(
+      boolean: model.isBusy,
+      whenTrueRender: Center(
+        child: CircularProgressIndicator(),
+      ),
+      whenFalseRender: RenderOnBoolean(
+        boolean: model.hasError,
         whenTrueRender: Center(
-          child: CircularProgressIndicator(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${model.error(model)}',
+                style: TextStyle(color: Colors.red[400]),
+              ),
+              verticalSpace(10),
+              OutlinedButton(
+                onPressed: model.retryFetch,
+                child: Text("Retry"),
+              ),
+            ],
+          ),
         ),
         whenFalseRender: RenderOnBoolean(
-          boolean: model.hasError,
+          boolean: !model.hasItems,
           whenTrueRender: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '${model.error(model)}',
-                  style: TextStyle(color: Colors.red[400]),
+                  'You have not added any ${_itemNameToString(itemName).toLowerCase()}s yet. Please add one.',
+                  textAlign: TextAlign.center,
                 ),
                 verticalSpace(10),
                 OutlinedButton(
-                  onPressed: model.retryFetch,
-                  child: Text("Retry"),
+                  onPressed: model.addNewItem,
+                  child: Text("Add new ${_itemNameToString(itemName)}"),
                 ),
               ],
             ),
           ),
-          whenFalseRender: RenderOnBoolean(
-            boolean: !model.hasItems,
-            whenTrueRender: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'You have not added any ${_itemNameToString(itemName).toLowerCase()}s yet. Please add one.',
-                    textAlign: TextAlign.center,
-                  ),
-                  verticalSpace(10),
-                  OutlinedButton(
-                    onPressed: model.addNewItem,
-                    child: Text("Add new ${_itemNameToString(itemName)}"),
-                  ),
-                ],
-              ),
-            ),
-            whenFalseRender: content,
-          ),
+          whenFalseRender: content,
         ),
       ),
     );

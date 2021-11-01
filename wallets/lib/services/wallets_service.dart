@@ -6,7 +6,7 @@ abstract class WalletsService {
 
   Future<void> deleteWalletWithId(String walletId);
 
-  Future<List<Wallet>> listCurrentUserWallets();
+  Future<List<DisplayableWallet>> listCurrentUserWallets();
 
   factory WalletsService() = _WalletsService;
 }
@@ -32,9 +32,28 @@ class _WalletsService implements WalletsService {
   }
 
   @override
-  Future<List<Wallet>> listCurrentUserWallets() async {
+  Future<List<DisplayableWallet>> listCurrentUserWallets() async {
     await Future.delayed(Duration(seconds: 2));
 
-    return [];
+    return [
+      DisplayableWallet(
+        organizationNAme: "ABC Studios",
+        data: Wallet(
+          id: "id",
+          organizationId: "organizationId",
+          name: "name",
+          balance: 0.0,
+        ),
+      ),
+      DisplayableWallet(
+        organizationNAme: "Oreal",
+        data: Wallet(
+          id: "id",
+          organizationId: "organizationId",
+          name: "name",
+          balance: 0.0,
+        ),
+      )
+    ];
   }
 }

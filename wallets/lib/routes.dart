@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:wallets/models/models.dart';
 import 'package:wallets/views/create_organization/create_organization_view.dart';
+import 'package:wallets/views/create_wallet/create_wallet_view.dart';
 import 'package:wallets/views/home/home_view.dart';
 import 'package:wallets/views/select_organization/select_organization_view.dart';
 import 'package:wallets/views/sign_in/sign_in_view.dart';
@@ -55,6 +57,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         viewToShow: CreateOrganizationView(),
       );
 
+    case Routes.createWalletView:
+      return _getPageRoute(
+        settings: settings,
+        viewToShow: CreateWalletView(
+          organization: settings.arguments as Organization,
+        ),
+      );
+
     default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(
@@ -69,6 +79,6 @@ PageRoute _getPageRoute(
   return PageTransition(
     child: viewToShow,
     settings: settings,
-    type: PageTransitionType.rightToLeft,
+    type: PageTransitionType.rightToLeftWithFade,
   );
 }

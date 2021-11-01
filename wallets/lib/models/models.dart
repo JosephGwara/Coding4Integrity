@@ -17,6 +17,14 @@ class Wallet with _$Wallet {
 }
 
 @freezed
+class DisplayableWallet with _$DisplayableWallet {
+  factory DisplayableWallet({
+    required String organizationNAme,
+    required Wallet data,
+  }) = _DisplayableWallet;
+}
+
+@freezed
 class Organization with _$Organization {
   factory Organization({
     required String id,

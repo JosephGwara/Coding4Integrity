@@ -228,6 +228,178 @@ abstract class _Wallet implements Wallet {
   _$WalletCopyWith<_Wallet> get copyWith => throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+class _$DisplayableWalletTearOff {
+  const _$DisplayableWalletTearOff();
+
+  _DisplayableWallet call(
+      {required String organizationNAme, required Wallet data}) {
+    return _DisplayableWallet(
+      organizationNAme: organizationNAme,
+      data: data,
+    );
+  }
+}
+
+/// @nodoc
+const $DisplayableWallet = _$DisplayableWalletTearOff();
+
+/// @nodoc
+mixin _$DisplayableWallet {
+  String get organizationNAme => throw _privateConstructorUsedError;
+  Wallet get data => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DisplayableWalletCopyWith<DisplayableWallet> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DisplayableWalletCopyWith<$Res> {
+  factory $DisplayableWalletCopyWith(
+          DisplayableWallet value, $Res Function(DisplayableWallet) then) =
+      _$DisplayableWalletCopyWithImpl<$Res>;
+  $Res call({String organizationNAme, Wallet data});
+
+  $WalletCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class _$DisplayableWalletCopyWithImpl<$Res>
+    implements $DisplayableWalletCopyWith<$Res> {
+  _$DisplayableWalletCopyWithImpl(this._value, this._then);
+
+  final DisplayableWallet _value;
+  // ignore: unused_field
+  final $Res Function(DisplayableWallet) _then;
+
+  @override
+  $Res call({
+    Object? organizationNAme = freezed,
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      organizationNAme: organizationNAme == freezed
+          ? _value.organizationNAme
+          : organizationNAme // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Wallet,
+    ));
+  }
+
+  @override
+  $WalletCopyWith<$Res> get data {
+    return $WalletCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$DisplayableWalletCopyWith<$Res>
+    implements $DisplayableWalletCopyWith<$Res> {
+  factory _$DisplayableWalletCopyWith(
+          _DisplayableWallet value, $Res Function(_DisplayableWallet) then) =
+      __$DisplayableWalletCopyWithImpl<$Res>;
+  @override
+  $Res call({String organizationNAme, Wallet data});
+
+  @override
+  $WalletCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$DisplayableWalletCopyWithImpl<$Res>
+    extends _$DisplayableWalletCopyWithImpl<$Res>
+    implements _$DisplayableWalletCopyWith<$Res> {
+  __$DisplayableWalletCopyWithImpl(
+      _DisplayableWallet _value, $Res Function(_DisplayableWallet) _then)
+      : super(_value, (v) => _then(v as _DisplayableWallet));
+
+  @override
+  _DisplayableWallet get _value => super._value as _DisplayableWallet;
+
+  @override
+  $Res call({
+    Object? organizationNAme = freezed,
+    Object? data = freezed,
+  }) {
+    return _then(_DisplayableWallet(
+      organizationNAme: organizationNAme == freezed
+          ? _value.organizationNAme
+          : organizationNAme // ignore: cast_nullable_to_non_nullable
+              as String,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Wallet,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DisplayableWallet
+    with DiagnosticableTreeMixin
+    implements _DisplayableWallet {
+  _$_DisplayableWallet({required this.organizationNAme, required this.data});
+
+  @override
+  final String organizationNAme;
+  @override
+  final Wallet data;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DisplayableWallet(organizationNAme: $organizationNAme, data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DisplayableWallet'))
+      ..add(DiagnosticsProperty('organizationNAme', organizationNAme))
+      ..add(DiagnosticsProperty('data', data));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _DisplayableWallet &&
+            (identical(other.organizationNAme, organizationNAme) ||
+                other.organizationNAme == organizationNAme) &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, organizationNAme, data);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DisplayableWalletCopyWith<_DisplayableWallet> get copyWith =>
+      __$DisplayableWalletCopyWithImpl<_DisplayableWallet>(this, _$identity);
+}
+
+abstract class _DisplayableWallet implements DisplayableWallet {
+  factory _DisplayableWallet(
+      {required String organizationNAme,
+      required Wallet data}) = _$_DisplayableWallet;
+
+  @override
+  String get organizationNAme;
+  @override
+  Wallet get data;
+  @override
+  @JsonKey(ignore: true)
+  _$DisplayableWalletCopyWith<_DisplayableWallet> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 Organization _$OrganizationFromJson(Map<String, dynamic> json) {
   return _Organization.fromJson(json);
 }
