@@ -50,7 +50,10 @@ class SignInView extends StatelessWidget with $SignInView {
                   enabled: !model.isSigningIn,
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(hintText: "Email"),
+                  decoration: InputDecoration(
+                    hintText: "Email",
+                    icon: Icon(Icons.mail),
+                  ),
                 ),
                 verticalSpace(10),
                 TextField(
@@ -58,7 +61,10 @@ class SignInView extends StatelessWidget with $SignInView {
                   controller: passwordController,
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: true,
-                  decoration: InputDecoration(hintText: "Password"),
+                  decoration: InputDecoration(
+                    hintText: "Password",
+                    icon: Icon(Icons.lock),
+                  ),
                 ),
                 verticalSpace(10),
                 Align(
@@ -74,7 +80,9 @@ class SignInView extends StatelessWidget with $SignInView {
                 verticalSpace(10),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 45)),
+                    minimumSize: Size(double.infinity, 45),
+                    elevation: 0,
+                  ),
                   onPressed: onButtonPressed(
                     model.signIn,
                     disableIf: model.isSigningIn,

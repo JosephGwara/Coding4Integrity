@@ -53,7 +53,9 @@ class CreateOrganizationView extends StatelessWidget
                 verticalSpace(30),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 45)),
+                    minimumSize: Size(double.infinity, 45),
+                    elevation: 0,
+                  ),
                   onPressed: onButtonPressed(
                     model.createOrganization,
                     disableIf: model.isCreatingOrganization,

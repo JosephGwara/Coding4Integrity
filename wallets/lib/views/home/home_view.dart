@@ -15,11 +15,13 @@ class HomeView extends StatelessWidget {
           title: Text("Wallets"),
           actions: [
             PopupMenuButton(
+              onSelected: (_) => model.createNewWallet(),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
               itemBuilder: (context) => [
                 PopupMenuItem(
+                  value: "add_new_wallet",
                   child: ListTile(
                     leading: Icon(Icons.add),
                     title: Text("Add New Wallet"),

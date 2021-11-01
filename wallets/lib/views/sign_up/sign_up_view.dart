@@ -63,14 +63,20 @@ class SignUpView extends StatelessWidget with $SignUpView {
                         enabled: !model.isSigningUp,
                         controller: displayNameController,
                         keyboardType: TextInputType.name,
-                        decoration: InputDecoration(hintText: "Display name"),
+                        decoration: InputDecoration(
+                          hintText: "Display name",
+                          icon: Icon(Icons.account_box),
+                        ),
                       ),
                       verticalSpace(20),
                       TextField(
                         enabled: !model.isSigningUp,
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(hintText: "Email"),
+                        decoration: InputDecoration(
+                          hintText: "Email",
+                          icon: Icon(Icons.mail),
+                        ),
                       ),
                       verticalSpace(10),
                       TextField(
@@ -78,7 +84,10 @@ class SignUpView extends StatelessWidget with $SignUpView {
                         controller: passwordController,
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: true,
-                        decoration: InputDecoration(hintText: "Password"),
+                        decoration: InputDecoration(
+                          hintText: "Password",
+                          icon: Icon(Icons.lock),
+                        ),
                       ),
                       verticalSpace(10),
                       TextField(
@@ -86,13 +95,17 @@ class SignUpView extends StatelessWidget with $SignUpView {
                         controller: confirmPasswordController,
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: true,
-                        decoration:
-                            InputDecoration(hintText: "Confirm password"),
+                        decoration: InputDecoration(
+                          hintText: "Confirm password",
+                          icon: Icon(Icons.lock),
+                        ),
                       ),
                       verticalSpace(30),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            minimumSize: Size(double.infinity, 45)),
+                          minimumSize: Size(double.infinity, 45),
+                          elevation: 0,
+                        ),
                         onPressed: onButtonPressed(
                           model.signUp,
                           disableIf: model.isSigningUp,
