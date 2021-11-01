@@ -24,101 +24,103 @@ class SignInView extends StatelessWidget with $SignInView {
             constraints: BoxConstraints(
               maxWidth: 310,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Welcome to Wallets",
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                Text(
-                  "Let's sign you in",
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-                verticalSpace(30),
-                if (model.hasError)
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
                   Text(
-                    "${model.error(model)}",
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2
-                        ?.copyWith(color: Colors.red[400]),
+                    "Welcome to Wallets",
+                    style: Theme.of(context).textTheme.headline4,
                   ),
-                verticalSpace(20),
-                TextField(
-                  enabled: !model.isSigningIn,
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    hintText: "Email",
-                    icon: Icon(Icons.mail),
+                  Text(
+                    "Let's sign you in",
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
-                ),
-                verticalSpace(10),
-                TextField(
-                  enabled: !model.isSigningIn,
-                  controller: passwordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    icon: Icon(Icons.lock),
+                  verticalSpace(30),
+                  if (model.hasError)
+                    Text(
+                      "${model.error(model)}",
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2
+                          ?.copyWith(color: Colors.red[400]),
+                    ),
+                  verticalSpace(20),
+                  TextField(
+                    enabled: !model.isSigningIn,
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      hintText: "Email",
+                      icon: Icon(Icons.mail),
+                    ),
                   ),
-                ),
-                verticalSpace(10),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: TextButton(
+                  verticalSpace(10),
+                  TextField(
+                    enabled: !model.isSigningIn,
+                    controller: passwordController,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: "Password",
+                      icon: Icon(Icons.lock),
+                    ),
+                  ),
+                  verticalSpace(10),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: TextButton(
+                      onPressed: onButtonPressed(
+                        model.forgotPassword,
+                        disableIf: model.isSigningIn,
+                      ),
+                      child: Text("Forgot Password"),
+                    ),
+                  ),
+                  verticalSpace(10),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 45),
+                      elevation: 0,
+                    ),
                     onPressed: onButtonPressed(
-                      model.forgotPassword,
+                      model.signIn,
                       disableIf: model.isSigningIn,
                     ),
-                    child: Text("Forgot Password"),
+                    child: model.isSigningIn
+                        ? SizedBox(
+                            height: 25,
+                            width: 25,
+                            child: CircularProgressIndicator(),
+                          )
+                        : Text(
+                            "Sign In",
+                            style: TextStyle(fontSize: 20),
+                          ),
                   ),
-                ),
-                verticalSpace(10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 45),
-                    elevation: 0,
-                  ),
-                  onPressed: onButtonPressed(
-                    model.signIn,
-                    disableIf: model.isSigningIn,
-                  ),
-                  child: model.isSigningIn
-                      ? SizedBox(
-                          height: 25,
-                          width: 25,
-                          child: CircularProgressIndicator(),
-                        )
-                      : Text(
-                          "Sign In",
-                          style: TextStyle(fontSize: 20),
+                  verticalSpace(15),
+                  Text(
+                    "Or",
+                    style: Theme.of(context).textTheme.headline4?.copyWith(
+                          fontSize: 20,
                         ),
-                ),
-                verticalSpace(15),
-                Text(
-                  "Or",
-                  style: Theme.of(context).textTheme.headline4?.copyWith(
-                        fontSize: 20,
-                      ),
-                ),
-                verticalSpace(15),
-                OutlinedButton(
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 45)),
-                  onPressed: onButtonPressed(
-                    model.navigateToSignUpView,
-                    disableIf: model.isSigningIn,
                   ),
-                  child: Text(
-                    "Sign Up",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                )
-              ],
+                  verticalSpace(15),
+                  OutlinedButton(
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size(double.infinity, 45)),
+                    onPressed: onButtonPressed(
+                      model.navigateToSignUpView,
+                      disableIf: model.isSigningIn,
+                    ),
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
