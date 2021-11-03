@@ -56,7 +56,9 @@ class WalletDetailsView extends StatelessWidget {
         body: <Widget>[
           WalletAllTransactionsTabView(wallet),
           UniquePaymentsTabView(wallet),
-          WalletInformationTabView(),
+          WalletInformationTabView(
+            wallet: wallet,
+          ),
         ].elementAt(model.currentNavBarIndex),
       ),
     );

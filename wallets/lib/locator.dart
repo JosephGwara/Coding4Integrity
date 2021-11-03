@@ -25,4 +25,5 @@ Future<void> setUpLocator() async {
   locator.registerLazySingleton(() => BlockScoutService());
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => DialogService());
+  locator.registerLazySingleton(() => SnackbarService());
 }
