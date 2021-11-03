@@ -29,10 +29,19 @@ class _HomeViewModel extends HomeViewModel {
         await navigationService.navigateTo(Routes.selectOrganizationView);
 
     if (organization != null) {
-      await navigationService.navigateTo(
-        Routes.createWalletView,
-        arguments: organization,
-      );
+      final walletAddress =
+          await navigationService.navigateTo(Routes.verifyWalletView);
+
+      if (walletAddress != null) {
+        await navigationService.navigateTo(
+          Routes.createWalletView,
+          arguments: CreateWalletViewArguments(
+            organization: organization,
+            walletPublicAddress: walletAddress,
+          ),
+        );
+        return _fetchWallets();
+      }
     }
   }
 
@@ -43,10 +52,12 @@ class _HomeViewModel extends HomeViewModel {
 
   @override
   Future<void> openWallet(DisplayableWallet wallet) async {
-    return navigationService.navigateTo(
+    await navigationService.navigateTo(
       Routes.walletDetailsView,
       arguments: wallet,
     );
+
+    return _fetchWallets();
   }
 
   Future<void> _fetchWallets() async {

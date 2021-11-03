@@ -7,10 +7,9 @@ part 'models.g.dart';
 @freezed
 class Wallet with _$Wallet {
   factory Wallet({
-    required String id,
+    required String publicAddress,
     required String organizationId,
     required String name,
-    required double balance,
   }) = _Wallet;
 
   factory Wallet.fromJson(Map<String, dynamic> json) => _$WalletFromJson(json);
@@ -19,8 +18,9 @@ class Wallet with _$Wallet {
 @freezed
 class DisplayableWallet with _$DisplayableWallet {
   factory DisplayableWallet({
-    required String organizationNAme,
+    required String organizationName,
     required Wallet data,
+    required double balance,
   }) = _DisplayableWallet;
 }
 
@@ -48,4 +48,21 @@ class DisplayableWalletTransaction with _$DisplayableWalletTransaction {
     // And false when [amount] went into the wallet.
     required double isPayment,
   }) = _DisplayableWalletTransaction;
+}
+
+@freezed
+class CreateWalletViewArguments with _$CreateWalletViewArguments {
+  factory CreateWalletViewArguments({
+    required Organization organization,
+    required String walletPublicAddress,
+  }) = _CreateWalletViewArguments;
+}
+
+@freezed
+class Transaction with _$Transaction {
+  factory Transaction({
+    required String fromAddress,
+    required String toAddress,
+    required double amount,
+  }) = _Transaction;
 }

@@ -8,6 +8,7 @@ abstract class OrganizationsService {
   Future<Organization> createOrganization(
       {required String withName, required String enterpiseNumber});
   Future<void> deleteOrganizationWithId(String organizationId);
+  Future<Organization> getOrganizationWithId(String organizationId);
   Future<List<Organization>> listCurrentUserOrganizations();
 
   factory OrganizationsService() = _OrganizationsService;
@@ -44,6 +45,19 @@ class _OrganizationsService implements OrganizationsService {
         .collection(ksOrganizationsCollection)
         .doc(organizationId)
         .delete();
+  }
+
+  @override
+  Future<Organization> getOrganizationWithId(String organizationId) async {
+    final doc = await firestore
+        .collection(ksOrganizationsCollection)
+        .doc(organizationId)
+        .get();
+
+    if (!doc.exists)
+      throw StateError("The requested organization does not exist.");
+
+    return Organization.fromJson(doc.data()!);
   }
 
   @override

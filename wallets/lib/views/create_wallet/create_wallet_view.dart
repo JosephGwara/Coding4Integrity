@@ -11,14 +11,14 @@ import 'package:wallets/views/create_wallet/create_wallet_viewmodel.dart';
   FormTextField(name: 'walletName', initialValue: ""),
 ])
 class CreateWalletView extends StatelessWidget with $CreateWalletView {
-  final Organization organization;
+  final CreateWalletViewArguments arguments;
 
-  CreateWalletView({required this.organization, Key? key}) : super(key: key);
+  CreateWalletView({required this.arguments, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<CreateWalletViewModel>.reactive(
-      viewModelBuilder: () => CreateWalletViewModel.makeInstance(organization),
+      viewModelBuilder: () => CreateWalletViewModel.makeInstance(arguments),
       onModelReady: (model) {
         listenToFormUpdated(model);
       },
@@ -31,6 +31,24 @@ class CreateWalletView extends StatelessWidget with $CreateWalletView {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                RichText(
+                  text: TextSpan(
+                      text: "Add new cZar wallet for ",
+                      style: TextStyle(color: Colors.black54),
+                      children: [
+                        TextSpan(
+                          text: arguments.organization.name,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(text: " with address "),
+                        TextSpan(
+                          text: arguments.walletPublicAddress,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(text: ". Please give the new wallet a name."),
+                      ]),
+                ),
+                verticalSpace(30),
                 if (model.hasError)
                   Text(
                     "${model.error(model)}",

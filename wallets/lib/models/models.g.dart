@@ -7,17 +7,15 @@ part of 'models.dart';
 // **************************************************************************
 
 _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
-      id: json['id'] as String,
+      publicAddress: json['publicAddress'] as String,
       organizationId: json['organizationId'] as String,
       name: json['name'] as String,
-      balance: (json['balance'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$_WalletToJson(_$_Wallet instance) => <String, dynamic>{
-      'id': instance.id,
+      'publicAddress': instance.publicAddress,
       'organizationId': instance.organizationId,
       'name': instance.name,
-      'balance': instance.balance,
     };
 
 _$_Organization _$$_OrganizationFromJson(Map<String, dynamic> json) =>

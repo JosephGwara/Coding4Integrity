@@ -25,7 +25,7 @@ class WalletDetailsView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "R${wallet.data.balance.round()}",
+                    "R${wallet.balance.round()}",
                     style: TextStyle(
                       fontSize: 17,
                     ),

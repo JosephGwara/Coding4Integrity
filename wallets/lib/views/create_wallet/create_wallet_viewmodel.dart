@@ -9,23 +9,25 @@ abstract class CreateWalletViewModel extends FormViewModel {
   bool get isCreatingWallet;
   Future<void> createWallet();
 
-  static CreateWalletViewModel makeInstance(Organization organization) =>
-      _CreateWalletViewModel(organization);
+  static CreateWalletViewModel makeInstance(
+          CreateWalletViewArguments arguments) =>
+      _CreateWalletViewModel(arguments);
 }
 
 class _CreateWalletViewModel extends CreateWalletViewModel {
   final navigationService = locator<NavigationService>();
   final walletsService = locator<WalletsService>();
 
-  final Organization organization;
-  _CreateWalletViewModel(this.organization);
+  final CreateWalletViewArguments arguments;
+  _CreateWalletViewModel(this.arguments);
 
   @override
   Future<void> createWallet() {
     final run = () async {
       final wallet = await walletsService.createWallet(
         withName: walletNameValue ?? "",
-        organizationId: organization.id,
+        organizationId: arguments.organization.id,
+        publicAddress: arguments.walletPublicAddress,
       );
       navigationService.back(result: wallet);
     };

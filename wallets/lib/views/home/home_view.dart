@@ -61,7 +61,7 @@ class HomeView extends StatelessWidget {
                                         topRight: Radius.circular(10),
                                       )),
                                   child: Text(
-                                    "R${wallet.data.balance.round()}",
+                                    "R${wallet.balance.round()}",
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline2
