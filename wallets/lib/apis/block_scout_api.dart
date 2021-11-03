@@ -44,8 +44,14 @@ class _BlockScoutApi implements BlockScoutApi {
     print(responseBody);
 
     final jsonResponse = json.decode(responseBody);
-    if (jsonResponse["status"] == "0")
-      throw StateError(jsonResponse["message"]);
+    if (jsonResponse["status"] == "0") {
+      if ((jsonResponse["message"] as String)
+          .contains("No token transfers found")) {
+        return [];
+      } else {
+        throw StateError(jsonResponse["message"]);
+      }
+    }
 
     return jsonResponse["result"];
   }

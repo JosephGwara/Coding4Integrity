@@ -16,7 +16,7 @@ class UniquePaymentsTabView extends StatelessWidget {
         boolean: uniquePayments.isEmpty,
         whenTrueRender: Center(
           child: Text(
-            "No traceable transactions so far. Make payments"
+            "No traceable payments so far. Make payments"
             " to other organizations to see them here.",
             textAlign: TextAlign.center,
           ),
