@@ -18,22 +18,6 @@ class WalletDetailsView extends StatelessWidget {
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           title: Text(wallet.data.name),
-          actions: [
-            Padding(
-              padding: EdgeInsets.only(right: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "R${wallet.balance.round()}",
-                    style: TextStyle(
-                      fontSize: 17,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: [
