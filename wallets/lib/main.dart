@@ -16,6 +16,7 @@ class WalletsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Wallets App',
+      debugShowCheckedModeBanner: false,
       navigatorKey: StackedService.navigatorKey,
       initialRoute: Routes.startupView,
       onGenerateRoute: generateRoute,
