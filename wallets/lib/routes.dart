@@ -8,6 +8,7 @@ import 'package:wallets/views/select_organization/select_organization_view.dart'
 import 'package:wallets/views/sign_in/sign_in_view.dart';
 import 'package:wallets/views/sign_up/sign_up_view.dart';
 import 'package:wallets/views/startup/startup_view.dart';
+import 'package:wallets/views/wallet_details/wallet_details_view.dart';
 
 class Routes {
   static const startupView = 'startupView';
@@ -17,6 +18,7 @@ class Routes {
   static const selectOrganizationView = 'selectOrganizationView';
   static const createOrganizationView = 'createOrganizationView';
   static const createWalletView = 'createWalletView';
+  static const walletDetailsView = 'walletDetailsView';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -62,6 +64,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         settings: settings,
         viewToShow: CreateWalletView(
           organization: settings.arguments as Organization,
+        ),
+      );
+
+    case Routes.walletDetailsView:
+      return _getPageRoute(
+        settings: settings,
+        viewToShow: WalletDetailsView(
+          wallet: settings.arguments as DisplayableWallet,
         ),
       );
 

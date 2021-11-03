@@ -43,7 +43,10 @@ class _HomeViewModel extends HomeViewModel {
 
   @override
   Future<void> openWallet(DisplayableWallet wallet) async {
-    // TODO: implement openWallet
+    return navigationService.navigateTo(
+      Routes.walletDetailsView,
+      arguments: wallet,
+    );
   }
 
   Future<void> _fetchWallets() async {

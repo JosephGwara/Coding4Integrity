@@ -621,3 +621,229 @@ abstract class _Organization implements Organization {
   _$OrganizationCopyWith<_Organization> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+class _$DisplayableWalletTransactionTearOff {
+  const _$DisplayableWalletTransactionTearOff();
+
+  _DisplayableWalletTransaction call(
+      {required String fromOrganizationName,
+      required String toOrganizationName,
+      required double amount,
+      required double isPayment}) {
+    return _DisplayableWalletTransaction(
+      fromOrganizationName: fromOrganizationName,
+      toOrganizationName: toOrganizationName,
+      amount: amount,
+      isPayment: isPayment,
+    );
+  }
+}
+
+/// @nodoc
+const $DisplayableWalletTransaction = _$DisplayableWalletTransactionTearOff();
+
+/// @nodoc
+mixin _$DisplayableWalletTransaction {
+  String get fromOrganizationName => throw _privateConstructorUsedError;
+  String get toOrganizationName => throw _privateConstructorUsedError;
+  double get amount =>
+      throw _privateConstructorUsedError; // True when [amount] went out of the wallet.
+// And false when [amount] went into the wallet.
+  double get isPayment => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DisplayableWalletTransactionCopyWith<DisplayableWalletTransaction>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DisplayableWalletTransactionCopyWith<$Res> {
+  factory $DisplayableWalletTransactionCopyWith(
+          DisplayableWalletTransaction value,
+          $Res Function(DisplayableWalletTransaction) then) =
+      _$DisplayableWalletTransactionCopyWithImpl<$Res>;
+  $Res call(
+      {String fromOrganizationName,
+      String toOrganizationName,
+      double amount,
+      double isPayment});
+}
+
+/// @nodoc
+class _$DisplayableWalletTransactionCopyWithImpl<$Res>
+    implements $DisplayableWalletTransactionCopyWith<$Res> {
+  _$DisplayableWalletTransactionCopyWithImpl(this._value, this._then);
+
+  final DisplayableWalletTransaction _value;
+  // ignore: unused_field
+  final $Res Function(DisplayableWalletTransaction) _then;
+
+  @override
+  $Res call({
+    Object? fromOrganizationName = freezed,
+    Object? toOrganizationName = freezed,
+    Object? amount = freezed,
+    Object? isPayment = freezed,
+  }) {
+    return _then(_value.copyWith(
+      fromOrganizationName: fromOrganizationName == freezed
+          ? _value.fromOrganizationName
+          : fromOrganizationName // ignore: cast_nullable_to_non_nullable
+              as String,
+      toOrganizationName: toOrganizationName == freezed
+          ? _value.toOrganizationName
+          : toOrganizationName // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      isPayment: isPayment == freezed
+          ? _value.isPayment
+          : isPayment // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$DisplayableWalletTransactionCopyWith<$Res>
+    implements $DisplayableWalletTransactionCopyWith<$Res> {
+  factory _$DisplayableWalletTransactionCopyWith(
+          _DisplayableWalletTransaction value,
+          $Res Function(_DisplayableWalletTransaction) then) =
+      __$DisplayableWalletTransactionCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String fromOrganizationName,
+      String toOrganizationName,
+      double amount,
+      double isPayment});
+}
+
+/// @nodoc
+class __$DisplayableWalletTransactionCopyWithImpl<$Res>
+    extends _$DisplayableWalletTransactionCopyWithImpl<$Res>
+    implements _$DisplayableWalletTransactionCopyWith<$Res> {
+  __$DisplayableWalletTransactionCopyWithImpl(
+      _DisplayableWalletTransaction _value,
+      $Res Function(_DisplayableWalletTransaction) _then)
+      : super(_value, (v) => _then(v as _DisplayableWalletTransaction));
+
+  @override
+  _DisplayableWalletTransaction get _value =>
+      super._value as _DisplayableWalletTransaction;
+
+  @override
+  $Res call({
+    Object? fromOrganizationName = freezed,
+    Object? toOrganizationName = freezed,
+    Object? amount = freezed,
+    Object? isPayment = freezed,
+  }) {
+    return _then(_DisplayableWalletTransaction(
+      fromOrganizationName: fromOrganizationName == freezed
+          ? _value.fromOrganizationName
+          : fromOrganizationName // ignore: cast_nullable_to_non_nullable
+              as String,
+      toOrganizationName: toOrganizationName == freezed
+          ? _value.toOrganizationName
+          : toOrganizationName // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      isPayment: isPayment == freezed
+          ? _value.isPayment
+          : isPayment // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DisplayableWalletTransaction
+    with DiagnosticableTreeMixin
+    implements _DisplayableWalletTransaction {
+  _$_DisplayableWalletTransaction(
+      {required this.fromOrganizationName,
+      required this.toOrganizationName,
+      required this.amount,
+      required this.isPayment});
+
+  @override
+  final String fromOrganizationName;
+  @override
+  final String toOrganizationName;
+  @override
+  final double amount;
+  @override // True when [amount] went out of the wallet.
+// And false when [amount] went into the wallet.
+  final double isPayment;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'DisplayableWalletTransaction(fromOrganizationName: $fromOrganizationName, toOrganizationName: $toOrganizationName, amount: $amount, isPayment: $isPayment)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DisplayableWalletTransaction'))
+      ..add(DiagnosticsProperty('fromOrganizationName', fromOrganizationName))
+      ..add(DiagnosticsProperty('toOrganizationName', toOrganizationName))
+      ..add(DiagnosticsProperty('amount', amount))
+      ..add(DiagnosticsProperty('isPayment', isPayment));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _DisplayableWalletTransaction &&
+            (identical(other.fromOrganizationName, fromOrganizationName) ||
+                other.fromOrganizationName == fromOrganizationName) &&
+            (identical(other.toOrganizationName, toOrganizationName) ||
+                other.toOrganizationName == toOrganizationName) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.isPayment, isPayment) ||
+                other.isPayment == isPayment));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, fromOrganizationName, toOrganizationName, amount, isPayment);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DisplayableWalletTransactionCopyWith<_DisplayableWalletTransaction>
+      get copyWith => __$DisplayableWalletTransactionCopyWithImpl<
+          _DisplayableWalletTransaction>(this, _$identity);
+}
+
+abstract class _DisplayableWalletTransaction
+    implements DisplayableWalletTransaction {
+  factory _DisplayableWalletTransaction(
+      {required String fromOrganizationName,
+      required String toOrganizationName,
+      required double amount,
+      required double isPayment}) = _$_DisplayableWalletTransaction;
+
+  @override
+  String get fromOrganizationName;
+  @override
+  String get toOrganizationName;
+  @override
+  double get amount;
+  @override // True when [amount] went out of the wallet.
+// And false when [amount] went into the wallet.
+  double get isPayment;
+  @override
+  @JsonKey(ignore: true)
+  _$DisplayableWalletTransactionCopyWith<_DisplayableWalletTransaction>
+      get copyWith => throw _privateConstructorUsedError;
+}

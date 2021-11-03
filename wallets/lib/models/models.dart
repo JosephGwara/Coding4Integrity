@@ -36,3 +36,16 @@ class Organization with _$Organization {
   factory Organization.fromJson(Map<String, dynamic> json) =>
       _$OrganizationFromJson(json);
 }
+
+@freezed
+class DisplayableWalletTransaction with _$DisplayableWalletTransaction {
+  factory DisplayableWalletTransaction({
+    required String fromOrganizationName,
+    required String toOrganizationName,
+    required double amount,
+
+    // True when [amount] went out of the wallet.
+    // And false when [amount] went into the wallet.
+    required double isPayment,
+  }) = _DisplayableWalletTransaction;
+}
