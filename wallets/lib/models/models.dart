@@ -38,15 +38,15 @@ class Organization with _$Organization {
 }
 
 @freezed
-class DisplayableWalletTransaction with _$DisplayableWalletTransaction {
-  factory DisplayableWalletTransaction({
-    required String fromOrganizationName,
-    required String toOrganizationName,
-    required double amount,
+class IdentifiableTransaction with _$IdentifiableTransaction {
+  factory IdentifiableTransaction({
+    required Organization fromOrganization,
+    required Organization toOrganization,
+    required Transaction data,
 
     // True when [amount] went out of the wallet.
     // And false when [amount] went into the wallet.
-    required double isPayment,
+    required bool isPayment,
   }) = _DisplayableWalletTransaction;
 }
 
@@ -64,5 +64,15 @@ class Transaction with _$Transaction {
     required String fromAddress,
     required String toAddress,
     required double amount,
+    required DateTime dateTime,
   }) = _Transaction;
+}
+
+@freezed
+class FetchTransactionsResults with _$FetchTransactionsResults {
+  factory FetchTransactionsResults({
+    required List<IdentifiableTransaction> allIdentifiableTransactions,
+    required Map<Organization, List<IdentifiableTransaction>> uniquePayments,
+    required List<Transaction> unidentifiableTransactions,
+  }) = _FetchTransactionsResults;
 }

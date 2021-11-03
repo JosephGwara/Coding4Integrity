@@ -3,12 +3,14 @@ import 'package:wallets/config/firestore_constants.dart';
 import 'package:wallets/locator.dart';
 import 'package:wallets/models/models.dart';
 import 'package:wallets/services/authentication_service.dart';
+import 'package:wallets/services/wallets_service.dart';
 
 abstract class OrganizationsService {
   Future<Organization> createOrganization(
       {required String withName, required String enterpiseNumber});
   Future<void> deleteOrganizationWithId(String organizationId);
   Future<Organization> getOrganizationWithId(String organizationId);
+  Future<Organization> getOrganizationOwningWallet(String walletId);
   Future<List<Organization>> listCurrentUserOrganizations();
 
   factory OrganizationsService() = _OrganizationsService;
@@ -17,6 +19,8 @@ abstract class OrganizationsService {
 class _OrganizationsService implements OrganizationsService {
   final firestore = locator<FirebaseFirestore>();
   final authenticationService = locator<AuthenticationService>();
+
+  WalletsService get walletsService => locator<WalletsService>();
 
   @override
   Future<Organization> createOrganization(
@@ -58,6 +62,12 @@ class _OrganizationsService implements OrganizationsService {
       throw StateError("The requested organization does not exist.");
 
     return Organization.fromJson(doc.data()!);
+  }
+
+  @override
+  Future<Organization> getOrganizationOwningWallet(String walletId) async {
+    final wallet = await walletsService.getWalletWithId(walletId);
+    return getOrganizationWithId(wallet.organizationId);
   }
 
   @override

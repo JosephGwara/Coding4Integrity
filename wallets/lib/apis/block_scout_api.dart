@@ -18,13 +18,26 @@ class _BlockScoutApi implements BlockScoutApi {
         "&address=$address";
 
     final response = await http.get(Uri.parse(endpoint));
-    return double.parse(parseResponse(response.body));
+    return transformValueToZar(parseResponse(response.body));
   }
 
   @override
-  Future<List<Transaction>> listTransactionsForWallet(String address) {
-    // TODO: implement listTransactionsForWallet
-    throw UnimplementedError();
+  Future<List<Transaction>> listTransactionsForWallet(String address) async {
+    final endpoint = "https://alfajores-blockscout.celo-testnet.org/api?"
+        "module=account&action=tokentx&address=$address"
+        "&contractaddress=0x8D222281967aa33315dE3F422cD11787baEbFd97&sort=desc";
+
+    final response = await http.get(Uri.parse(endpoint));
+    return (parseResponse(response.body) as Iterable)
+        .map(
+          (transaction) => Transaction(
+              fromAddress: transaction["from"],
+              toAddress: transaction["to"],
+              amount: transformValueToZar(transaction["value"]),
+              dateTime: DateTime.fromMillisecondsSinceEpoch(
+                  int.parse(transaction["timeStamp"]) * 1000)),
+        )
+        .toList();
   }
 
   dynamic parseResponse(String responseBody) {
@@ -35,5 +48,12 @@ class _BlockScoutApi implements BlockScoutApi {
       throw StateError(jsonResponse["message"]);
 
     return jsonResponse["result"];
+  }
+
+  double transformValueToZar(String value) {
+    final amount = BigInt.parse(value);
+    final divisor = BigInt.parse("1000000000000000000");
+
+    return (amount / divisor);
   }
 }

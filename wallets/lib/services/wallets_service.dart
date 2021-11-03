@@ -12,17 +12,19 @@ abstract class WalletsService {
       required String organizationId});
 
   Future<void> deleteWalletWithId(String walletId);
+  Future<Wallet> getWalletWithId(String walletId);
 
   Future<List<DisplayableWallet>> listCurrentUserWallets();
 
   factory WalletsService() = _WalletsService;
 }
 
-// TODO: Connect to backend
 class _WalletsService implements WalletsService {
   final firestore = locator<FirebaseFirestore>();
-  final organizationsService = locator<OrganizationsService>();
   final blockScoutService = locator<BlockScoutService>();
+
+  OrganizationsService get organizationsService =>
+      locator<OrganizationsService>();
 
   @override
   Future<Wallet> createWallet(
@@ -93,5 +95,15 @@ class _WalletsService implements WalletsService {
         .get();
 
     return doc.exists;
+  }
+
+  @override
+  Future<Wallet> getWalletWithId(String walletId) async {
+    final doc =
+        await firestore.collection(ksWalletsCollection).doc(walletId).get();
+
+    if (!doc.exists) throw StateError("Wallet does not exists");
+
+    return Wallet.fromJson(doc.data()!);
   }
 }

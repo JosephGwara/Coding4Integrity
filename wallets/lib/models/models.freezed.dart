@@ -627,108 +627,139 @@ abstract class _Organization implements Organization {
 }
 
 /// @nodoc
-class _$DisplayableWalletTransactionTearOff {
-  const _$DisplayableWalletTransactionTearOff();
+class _$IdentifiableTransactionTearOff {
+  const _$IdentifiableTransactionTearOff();
 
   _DisplayableWalletTransaction call(
-      {required String fromOrganizationName,
-      required String toOrganizationName,
-      required double amount,
-      required double isPayment}) {
+      {required Organization fromOrganization,
+      required Organization toOrganization,
+      required Transaction data,
+      required bool isPayment}) {
     return _DisplayableWalletTransaction(
-      fromOrganizationName: fromOrganizationName,
-      toOrganizationName: toOrganizationName,
-      amount: amount,
+      fromOrganization: fromOrganization,
+      toOrganization: toOrganization,
+      data: data,
       isPayment: isPayment,
     );
   }
 }
 
 /// @nodoc
-const $DisplayableWalletTransaction = _$DisplayableWalletTransactionTearOff();
+const $IdentifiableTransaction = _$IdentifiableTransactionTearOff();
 
 /// @nodoc
-mixin _$DisplayableWalletTransaction {
-  String get fromOrganizationName => throw _privateConstructorUsedError;
-  String get toOrganizationName => throw _privateConstructorUsedError;
-  double get amount =>
+mixin _$IdentifiableTransaction {
+  Organization get fromOrganization => throw _privateConstructorUsedError;
+  Organization get toOrganization => throw _privateConstructorUsedError;
+  Transaction get data =>
       throw _privateConstructorUsedError; // True when [amount] went out of the wallet.
 // And false when [amount] went into the wallet.
-  double get isPayment => throw _privateConstructorUsedError;
+  bool get isPayment => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DisplayableWalletTransactionCopyWith<DisplayableWalletTransaction>
-      get copyWith => throw _privateConstructorUsedError;
+  $IdentifiableTransactionCopyWith<IdentifiableTransaction> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DisplayableWalletTransactionCopyWith<$Res> {
-  factory $DisplayableWalletTransactionCopyWith(
-          DisplayableWalletTransaction value,
-          $Res Function(DisplayableWalletTransaction) then) =
-      _$DisplayableWalletTransactionCopyWithImpl<$Res>;
+abstract class $IdentifiableTransactionCopyWith<$Res> {
+  factory $IdentifiableTransactionCopyWith(IdentifiableTransaction value,
+          $Res Function(IdentifiableTransaction) then) =
+      _$IdentifiableTransactionCopyWithImpl<$Res>;
   $Res call(
-      {String fromOrganizationName,
-      String toOrganizationName,
-      double amount,
-      double isPayment});
+      {Organization fromOrganization,
+      Organization toOrganization,
+      Transaction data,
+      bool isPayment});
+
+  $OrganizationCopyWith<$Res> get fromOrganization;
+  $OrganizationCopyWith<$Res> get toOrganization;
+  $TransactionCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class _$DisplayableWalletTransactionCopyWithImpl<$Res>
-    implements $DisplayableWalletTransactionCopyWith<$Res> {
-  _$DisplayableWalletTransactionCopyWithImpl(this._value, this._then);
+class _$IdentifiableTransactionCopyWithImpl<$Res>
+    implements $IdentifiableTransactionCopyWith<$Res> {
+  _$IdentifiableTransactionCopyWithImpl(this._value, this._then);
 
-  final DisplayableWalletTransaction _value;
+  final IdentifiableTransaction _value;
   // ignore: unused_field
-  final $Res Function(DisplayableWalletTransaction) _then;
+  final $Res Function(IdentifiableTransaction) _then;
 
   @override
   $Res call({
-    Object? fromOrganizationName = freezed,
-    Object? toOrganizationName = freezed,
-    Object? amount = freezed,
+    Object? fromOrganization = freezed,
+    Object? toOrganization = freezed,
+    Object? data = freezed,
     Object? isPayment = freezed,
   }) {
     return _then(_value.copyWith(
-      fromOrganizationName: fromOrganizationName == freezed
-          ? _value.fromOrganizationName
-          : fromOrganizationName // ignore: cast_nullable_to_non_nullable
-              as String,
-      toOrganizationName: toOrganizationName == freezed
-          ? _value.toOrganizationName
-          : toOrganizationName // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: amount == freezed
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as double,
+      fromOrganization: fromOrganization == freezed
+          ? _value.fromOrganization
+          : fromOrganization // ignore: cast_nullable_to_non_nullable
+              as Organization,
+      toOrganization: toOrganization == freezed
+          ? _value.toOrganization
+          : toOrganization // ignore: cast_nullable_to_non_nullable
+              as Organization,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Transaction,
       isPayment: isPayment == freezed
           ? _value.isPayment
           : isPayment // ignore: cast_nullable_to_non_nullable
-              as double,
+              as bool,
     ));
+  }
+
+  @override
+  $OrganizationCopyWith<$Res> get fromOrganization {
+    return $OrganizationCopyWith<$Res>(_value.fromOrganization, (value) {
+      return _then(_value.copyWith(fromOrganization: value));
+    });
+  }
+
+  @override
+  $OrganizationCopyWith<$Res> get toOrganization {
+    return $OrganizationCopyWith<$Res>(_value.toOrganization, (value) {
+      return _then(_value.copyWith(toOrganization: value));
+    });
+  }
+
+  @override
+  $TransactionCopyWith<$Res> get data {
+    return $TransactionCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
   }
 }
 
 /// @nodoc
 abstract class _$DisplayableWalletTransactionCopyWith<$Res>
-    implements $DisplayableWalletTransactionCopyWith<$Res> {
+    implements $IdentifiableTransactionCopyWith<$Res> {
   factory _$DisplayableWalletTransactionCopyWith(
           _DisplayableWalletTransaction value,
           $Res Function(_DisplayableWalletTransaction) then) =
       __$DisplayableWalletTransactionCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String fromOrganizationName,
-      String toOrganizationName,
-      double amount,
-      double isPayment});
+      {Organization fromOrganization,
+      Organization toOrganization,
+      Transaction data,
+      bool isPayment});
+
+  @override
+  $OrganizationCopyWith<$Res> get fromOrganization;
+  @override
+  $OrganizationCopyWith<$Res> get toOrganization;
+  @override
+  $TransactionCopyWith<$Res> get data;
 }
 
 /// @nodoc
 class __$DisplayableWalletTransactionCopyWithImpl<$Res>
-    extends _$DisplayableWalletTransactionCopyWithImpl<$Res>
+    extends _$IdentifiableTransactionCopyWithImpl<$Res>
     implements _$DisplayableWalletTransactionCopyWith<$Res> {
   __$DisplayableWalletTransactionCopyWithImpl(
       _DisplayableWalletTransaction _value,
@@ -741,28 +772,28 @@ class __$DisplayableWalletTransactionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? fromOrganizationName = freezed,
-    Object? toOrganizationName = freezed,
-    Object? amount = freezed,
+    Object? fromOrganization = freezed,
+    Object? toOrganization = freezed,
+    Object? data = freezed,
     Object? isPayment = freezed,
   }) {
     return _then(_DisplayableWalletTransaction(
-      fromOrganizationName: fromOrganizationName == freezed
-          ? _value.fromOrganizationName
-          : fromOrganizationName // ignore: cast_nullable_to_non_nullable
-              as String,
-      toOrganizationName: toOrganizationName == freezed
-          ? _value.toOrganizationName
-          : toOrganizationName // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: amount == freezed
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as double,
+      fromOrganization: fromOrganization == freezed
+          ? _value.fromOrganization
+          : fromOrganization // ignore: cast_nullable_to_non_nullable
+              as Organization,
+      toOrganization: toOrganization == freezed
+          ? _value.toOrganization
+          : toOrganization // ignore: cast_nullable_to_non_nullable
+              as Organization,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Transaction,
       isPayment: isPayment == freezed
           ? _value.isPayment
           : isPayment // ignore: cast_nullable_to_non_nullable
-              as double,
+              as bool,
     ));
   }
 }
@@ -773,34 +804,34 @@ class _$_DisplayableWalletTransaction
     with DiagnosticableTreeMixin
     implements _DisplayableWalletTransaction {
   _$_DisplayableWalletTransaction(
-      {required this.fromOrganizationName,
-      required this.toOrganizationName,
-      required this.amount,
+      {required this.fromOrganization,
+      required this.toOrganization,
+      required this.data,
       required this.isPayment});
 
   @override
-  final String fromOrganizationName;
+  final Organization fromOrganization;
   @override
-  final String toOrganizationName;
+  final Organization toOrganization;
   @override
-  final double amount;
+  final Transaction data;
   @override // True when [amount] went out of the wallet.
 // And false when [amount] went into the wallet.
-  final double isPayment;
+  final bool isPayment;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DisplayableWalletTransaction(fromOrganizationName: $fromOrganizationName, toOrganizationName: $toOrganizationName, amount: $amount, isPayment: $isPayment)';
+    return 'IdentifiableTransaction(fromOrganization: $fromOrganization, toOrganization: $toOrganization, data: $data, isPayment: $isPayment)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'DisplayableWalletTransaction'))
-      ..add(DiagnosticsProperty('fromOrganizationName', fromOrganizationName))
-      ..add(DiagnosticsProperty('toOrganizationName', toOrganizationName))
-      ..add(DiagnosticsProperty('amount', amount))
+      ..add(DiagnosticsProperty('type', 'IdentifiableTransaction'))
+      ..add(DiagnosticsProperty('fromOrganization', fromOrganization))
+      ..add(DiagnosticsProperty('toOrganization', toOrganization))
+      ..add(DiagnosticsProperty('data', data))
       ..add(DiagnosticsProperty('isPayment', isPayment));
   }
 
@@ -809,18 +840,18 @@ class _$_DisplayableWalletTransaction
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DisplayableWalletTransaction &&
-            (identical(other.fromOrganizationName, fromOrganizationName) ||
-                other.fromOrganizationName == fromOrganizationName) &&
-            (identical(other.toOrganizationName, toOrganizationName) ||
-                other.toOrganizationName == toOrganizationName) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.fromOrganization, fromOrganization) ||
+                other.fromOrganization == fromOrganization) &&
+            (identical(other.toOrganization, toOrganization) ||
+                other.toOrganization == toOrganization) &&
+            (identical(other.data, data) || other.data == data) &&
             (identical(other.isPayment, isPayment) ||
                 other.isPayment == isPayment));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, fromOrganizationName, toOrganizationName, amount, isPayment);
+      runtimeType, fromOrganization, toOrganization, data, isPayment);
 
   @JsonKey(ignore: true)
   @override
@@ -830,22 +861,22 @@ class _$_DisplayableWalletTransaction
 }
 
 abstract class _DisplayableWalletTransaction
-    implements DisplayableWalletTransaction {
+    implements IdentifiableTransaction {
   factory _DisplayableWalletTransaction(
-      {required String fromOrganizationName,
-      required String toOrganizationName,
-      required double amount,
-      required double isPayment}) = _$_DisplayableWalletTransaction;
+      {required Organization fromOrganization,
+      required Organization toOrganization,
+      required Transaction data,
+      required bool isPayment}) = _$_DisplayableWalletTransaction;
 
   @override
-  String get fromOrganizationName;
+  Organization get fromOrganization;
   @override
-  String get toOrganizationName;
+  Organization get toOrganization;
   @override
-  double get amount;
+  Transaction get data;
   @override // True when [amount] went out of the wallet.
 // And false when [amount] went into the wallet.
-  double get isPayment;
+  bool get isPayment;
   @override
   @JsonKey(ignore: true)
   _$DisplayableWalletTransactionCopyWith<_DisplayableWalletTransaction>
@@ -1038,11 +1069,13 @@ class _$TransactionTearOff {
   _Transaction call(
       {required String fromAddress,
       required String toAddress,
-      required double amount}) {
+      required double amount,
+      required DateTime dateTime}) {
     return _Transaction(
       fromAddress: fromAddress,
       toAddress: toAddress,
       amount: amount,
+      dateTime: dateTime,
     );
   }
 }
@@ -1055,6 +1088,7 @@ mixin _$Transaction {
   String get fromAddress => throw _privateConstructorUsedError;
   String get toAddress => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
+  DateTime get dateTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TransactionCopyWith<Transaction> get copyWith =>
@@ -1066,7 +1100,8 @@ abstract class $TransactionCopyWith<$Res> {
   factory $TransactionCopyWith(
           Transaction value, $Res Function(Transaction) then) =
       _$TransactionCopyWithImpl<$Res>;
-  $Res call({String fromAddress, String toAddress, double amount});
+  $Res call(
+      {String fromAddress, String toAddress, double amount, DateTime dateTime});
 }
 
 /// @nodoc
@@ -1082,6 +1117,7 @@ class _$TransactionCopyWithImpl<$Res> implements $TransactionCopyWith<$Res> {
     Object? fromAddress = freezed,
     Object? toAddress = freezed,
     Object? amount = freezed,
+    Object? dateTime = freezed,
   }) {
     return _then(_value.copyWith(
       fromAddress: fromAddress == freezed
@@ -1096,6 +1132,10 @@ class _$TransactionCopyWithImpl<$Res> implements $TransactionCopyWith<$Res> {
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
+      dateTime: dateTime == freezed
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -1107,7 +1147,8 @@ abstract class _$TransactionCopyWith<$Res>
           _Transaction value, $Res Function(_Transaction) then) =
       __$TransactionCopyWithImpl<$Res>;
   @override
-  $Res call({String fromAddress, String toAddress, double amount});
+  $Res call(
+      {String fromAddress, String toAddress, double amount, DateTime dateTime});
 }
 
 /// @nodoc
@@ -1125,6 +1166,7 @@ class __$TransactionCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
     Object? fromAddress = freezed,
     Object? toAddress = freezed,
     Object? amount = freezed,
+    Object? dateTime = freezed,
   }) {
     return _then(_Transaction(
       fromAddress: fromAddress == freezed
@@ -1139,6 +1181,10 @@ class __$TransactionCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
+      dateTime: dateTime == freezed
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -1149,7 +1195,8 @@ class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
   _$_Transaction(
       {required this.fromAddress,
       required this.toAddress,
-      required this.amount});
+      required this.amount,
+      required this.dateTime});
 
   @override
   final String fromAddress;
@@ -1157,10 +1204,12 @@ class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
   final String toAddress;
   @override
   final double amount;
+  @override
+  final DateTime dateTime;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Transaction(fromAddress: $fromAddress, toAddress: $toAddress, amount: $amount)';
+    return 'Transaction(fromAddress: $fromAddress, toAddress: $toAddress, amount: $amount, dateTime: $dateTime)';
   }
 
   @override
@@ -1170,7 +1219,8 @@ class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
       ..add(DiagnosticsProperty('type', 'Transaction'))
       ..add(DiagnosticsProperty('fromAddress', fromAddress))
       ..add(DiagnosticsProperty('toAddress', toAddress))
-      ..add(DiagnosticsProperty('amount', amount));
+      ..add(DiagnosticsProperty('amount', amount))
+      ..add(DiagnosticsProperty('dateTime', dateTime));
   }
 
   @override
@@ -1182,11 +1232,14 @@ class _$_Transaction with DiagnosticableTreeMixin implements _Transaction {
                 other.fromAddress == fromAddress) &&
             (identical(other.toAddress, toAddress) ||
                 other.toAddress == toAddress) &&
-            (identical(other.amount, amount) || other.amount == amount));
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fromAddress, toAddress, amount);
+  int get hashCode =>
+      Object.hash(runtimeType, fromAddress, toAddress, amount, dateTime);
 
   @JsonKey(ignore: true)
   @override
@@ -1198,7 +1251,8 @@ abstract class _Transaction implements Transaction {
   factory _Transaction(
       {required String fromAddress,
       required String toAddress,
-      required double amount}) = _$_Transaction;
+      required double amount,
+      required DateTime dateTime}) = _$_Transaction;
 
   @override
   String get fromAddress;
@@ -1207,7 +1261,214 @@ abstract class _Transaction implements Transaction {
   @override
   double get amount;
   @override
+  DateTime get dateTime;
+  @override
   @JsonKey(ignore: true)
   _$TransactionCopyWith<_Transaction> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+class _$FetchTransactionsResultsTearOff {
+  const _$FetchTransactionsResultsTearOff();
+
+  _FetchTransactionsResults call(
+      {required List<IdentifiableTransaction> allIdentifiableTransactions,
+      required Map<Organization, List<IdentifiableTransaction>> uniquePayments,
+      required List<Transaction> unidentifiableTransactions}) {
+    return _FetchTransactionsResults(
+      allIdentifiableTransactions: allIdentifiableTransactions,
+      uniquePayments: uniquePayments,
+      unidentifiableTransactions: unidentifiableTransactions,
+    );
+  }
+}
+
+/// @nodoc
+const $FetchTransactionsResults = _$FetchTransactionsResultsTearOff();
+
+/// @nodoc
+mixin _$FetchTransactionsResults {
+  List<IdentifiableTransaction> get allIdentifiableTransactions =>
+      throw _privateConstructorUsedError;
+  Map<Organization, List<IdentifiableTransaction>> get uniquePayments =>
+      throw _privateConstructorUsedError;
+  List<Transaction> get unidentifiableTransactions =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $FetchTransactionsResultsCopyWith<FetchTransactionsResults> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FetchTransactionsResultsCopyWith<$Res> {
+  factory $FetchTransactionsResultsCopyWith(FetchTransactionsResults value,
+          $Res Function(FetchTransactionsResults) then) =
+      _$FetchTransactionsResultsCopyWithImpl<$Res>;
+  $Res call(
+      {List<IdentifiableTransaction> allIdentifiableTransactions,
+      Map<Organization, List<IdentifiableTransaction>> uniquePayments,
+      List<Transaction> unidentifiableTransactions});
+}
+
+/// @nodoc
+class _$FetchTransactionsResultsCopyWithImpl<$Res>
+    implements $FetchTransactionsResultsCopyWith<$Res> {
+  _$FetchTransactionsResultsCopyWithImpl(this._value, this._then);
+
+  final FetchTransactionsResults _value;
+  // ignore: unused_field
+  final $Res Function(FetchTransactionsResults) _then;
+
+  @override
+  $Res call({
+    Object? allIdentifiableTransactions = freezed,
+    Object? uniquePayments = freezed,
+    Object? unidentifiableTransactions = freezed,
+  }) {
+    return _then(_value.copyWith(
+      allIdentifiableTransactions: allIdentifiableTransactions == freezed
+          ? _value.allIdentifiableTransactions
+          : allIdentifiableTransactions // ignore: cast_nullable_to_non_nullable
+              as List<IdentifiableTransaction>,
+      uniquePayments: uniquePayments == freezed
+          ? _value.uniquePayments
+          : uniquePayments // ignore: cast_nullable_to_non_nullable
+              as Map<Organization, List<IdentifiableTransaction>>,
+      unidentifiableTransactions: unidentifiableTransactions == freezed
+          ? _value.unidentifiableTransactions
+          : unidentifiableTransactions // ignore: cast_nullable_to_non_nullable
+              as List<Transaction>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$FetchTransactionsResultsCopyWith<$Res>
+    implements $FetchTransactionsResultsCopyWith<$Res> {
+  factory _$FetchTransactionsResultsCopyWith(_FetchTransactionsResults value,
+          $Res Function(_FetchTransactionsResults) then) =
+      __$FetchTransactionsResultsCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {List<IdentifiableTransaction> allIdentifiableTransactions,
+      Map<Organization, List<IdentifiableTransaction>> uniquePayments,
+      List<Transaction> unidentifiableTransactions});
+}
+
+/// @nodoc
+class __$FetchTransactionsResultsCopyWithImpl<$Res>
+    extends _$FetchTransactionsResultsCopyWithImpl<$Res>
+    implements _$FetchTransactionsResultsCopyWith<$Res> {
+  __$FetchTransactionsResultsCopyWithImpl(_FetchTransactionsResults _value,
+      $Res Function(_FetchTransactionsResults) _then)
+      : super(_value, (v) => _then(v as _FetchTransactionsResults));
+
+  @override
+  _FetchTransactionsResults get _value =>
+      super._value as _FetchTransactionsResults;
+
+  @override
+  $Res call({
+    Object? allIdentifiableTransactions = freezed,
+    Object? uniquePayments = freezed,
+    Object? unidentifiableTransactions = freezed,
+  }) {
+    return _then(_FetchTransactionsResults(
+      allIdentifiableTransactions: allIdentifiableTransactions == freezed
+          ? _value.allIdentifiableTransactions
+          : allIdentifiableTransactions // ignore: cast_nullable_to_non_nullable
+              as List<IdentifiableTransaction>,
+      uniquePayments: uniquePayments == freezed
+          ? _value.uniquePayments
+          : uniquePayments // ignore: cast_nullable_to_non_nullable
+              as Map<Organization, List<IdentifiableTransaction>>,
+      unidentifiableTransactions: unidentifiableTransactions == freezed
+          ? _value.unidentifiableTransactions
+          : unidentifiableTransactions // ignore: cast_nullable_to_non_nullable
+              as List<Transaction>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FetchTransactionsResults
+    with DiagnosticableTreeMixin
+    implements _FetchTransactionsResults {
+  _$_FetchTransactionsResults(
+      {required this.allIdentifiableTransactions,
+      required this.uniquePayments,
+      required this.unidentifiableTransactions});
+
+  @override
+  final List<IdentifiableTransaction> allIdentifiableTransactions;
+  @override
+  final Map<Organization, List<IdentifiableTransaction>> uniquePayments;
+  @override
+  final List<Transaction> unidentifiableTransactions;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'FetchTransactionsResults(allIdentifiableTransactions: $allIdentifiableTransactions, uniquePayments: $uniquePayments, unidentifiableTransactions: $unidentifiableTransactions)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FetchTransactionsResults'))
+      ..add(DiagnosticsProperty(
+          'allIdentifiableTransactions', allIdentifiableTransactions))
+      ..add(DiagnosticsProperty('uniquePayments', uniquePayments))
+      ..add(DiagnosticsProperty(
+          'unidentifiableTransactions', unidentifiableTransactions));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _FetchTransactionsResults &&
+            const DeepCollectionEquality().equals(
+                other.allIdentifiableTransactions,
+                allIdentifiableTransactions) &&
+            const DeepCollectionEquality()
+                .equals(other.uniquePayments, uniquePayments) &&
+            const DeepCollectionEquality().equals(
+                other.unidentifiableTransactions, unidentifiableTransactions));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(allIdentifiableTransactions),
+      const DeepCollectionEquality().hash(uniquePayments),
+      const DeepCollectionEquality().hash(unidentifiableTransactions));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FetchTransactionsResultsCopyWith<_FetchTransactionsResults> get copyWith =>
+      __$FetchTransactionsResultsCopyWithImpl<_FetchTransactionsResults>(
+          this, _$identity);
+}
+
+abstract class _FetchTransactionsResults implements FetchTransactionsResults {
+  factory _FetchTransactionsResults(
+      {required List<IdentifiableTransaction> allIdentifiableTransactions,
+      required Map<Organization, List<IdentifiableTransaction>> uniquePayments,
+      required List<Transaction>
+          unidentifiableTransactions}) = _$_FetchTransactionsResults;
+
+  @override
+  List<IdentifiableTransaction> get allIdentifiableTransactions;
+  @override
+  Map<Organization, List<IdentifiableTransaction>> get uniquePayments;
+  @override
+  List<Transaction> get unidentifiableTransactions;
+  @override
+  @JsonKey(ignore: true)
+  _$FetchTransactionsResultsCopyWith<_FetchTransactionsResults> get copyWith =>
       throw _privateConstructorUsedError;
 }
