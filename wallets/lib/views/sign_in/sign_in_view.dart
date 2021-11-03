@@ -30,7 +30,7 @@ class SignInView extends StatelessWidget with $SignInView {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Welcome to Wallets",
+                    "Welcome to BoltaPay",
                     style: Theme.of(context).textTheme.headline4,
                   ),
                   Text(

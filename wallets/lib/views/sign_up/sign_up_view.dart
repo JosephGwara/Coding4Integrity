@@ -49,7 +49,7 @@ class SignUpView extends StatelessWidget with $SignUpView {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "Sign Up to Wallets",
+                            "Sign Up to BoltaPay",
                             style: Theme.of(context).textTheme.headline4,
                           ),
                           verticalSpace(30),
