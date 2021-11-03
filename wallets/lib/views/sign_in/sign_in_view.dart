@@ -32,10 +32,14 @@ class SignInView extends StatelessWidget with $SignInView {
                   Text(
                     "Welcome to BoltaPay",
                     style: Theme.of(context).textTheme.headline4,
+                    textAlign: TextAlign.center,
                   ),
                   Text(
                     "Let's sign you in",
-                    style: Theme.of(context).textTheme.subtitle1,
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1
+                        ?.copyWith(color: Colors.grey[600]),
                   ),
                   verticalSpace(30),
                   if (model.hasError)
