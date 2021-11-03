@@ -11,6 +11,11 @@ class HomeView extends StatelessWidget {
       viewModelBuilder: () => HomeViewModel.makeInstance(),
       onModelReady: (model) => model.init(),
       builder: (context, model, child) => Scaffold(
+        floatingActionButton: FloatingActionButton(
+          tooltip: "Make Payment",
+          onPressed: model.initiatePayment,
+          child: Icon(Icons.payment_rounded),
+        ),
         appBar: AppBar(
           title: Text("Wallets"),
           actions: [
@@ -43,6 +48,10 @@ class HomeView extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final wallet = model.wallets[index];
                       return Card(
+                        margin: EdgeInsets.only(
+                          top: 10,
+                          bottom: index == model.wallets.length - 1 ? 200 : 0,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -87,7 +96,7 @@ class HomeView extends StatelessWidget {
                         ),
                       );
                     },
-                    separatorBuilder: (context, index) => verticalSpace(10),
+                    separatorBuilder: (context, index) => verticalSpace(0),
                     itemCount: model.wallets.length,
                   ),
                 )

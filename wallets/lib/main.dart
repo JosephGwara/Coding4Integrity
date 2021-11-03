@@ -15,7 +15,7 @@ class WalletsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Wallets App',
+      title: 'Bolta Pay',
       debugShowCheckedModeBanner: false,
       navigatorKey: StackedService.navigatorKey,
       initialRoute: Routes.startupView,

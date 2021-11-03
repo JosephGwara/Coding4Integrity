@@ -8,6 +8,7 @@ import 'package:wallets/services/authentication_service.dart';
 import 'package:wallets/services/block_scout_service.dart';
 import 'package:wallets/services/credentials_service.dart';
 import 'package:wallets/services/organizations_service.dart';
+import 'package:wallets/services/payments_service.dart';
 import 'package:wallets/services/wallets_service.dart';
 
 final locator = GetIt.instance;
@@ -23,6 +24,7 @@ Future<void> setUpLocator() async {
   locator.registerLazySingleton(() => CredentialsService());
   locator.registerLazySingleton(() => BlockScoutApi());
   locator.registerLazySingleton(() => BlockScoutService());
+  locator.registerLazySingleton(() => PaymentsService());
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => DialogService());
   locator.registerLazySingleton(() => SnackbarService());

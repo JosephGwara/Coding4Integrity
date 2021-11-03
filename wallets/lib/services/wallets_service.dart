@@ -15,6 +15,7 @@ abstract class WalletsService {
   Future<Wallet> getWalletWithId(String walletId);
 
   Future<List<DisplayableWallet>> listCurrentUserWallets();
+  Future<List<DisplayableWallet>> listAllWalletsIgnoringBalances();
 
   factory WalletsService() = _WalletsService;
 }
@@ -76,13 +77,34 @@ class _WalletsService implements WalletsService {
 
         out.add(
           DisplayableWallet(
-            organizationName: organization.name,
+            organization: organization,
             data: wallet,
             balance: await blockScoutService
                 .getZarBalanceOfWallet(wallet.publicAddress),
           ),
         );
       }
+    }
+
+    return out;
+  }
+
+  @override
+  Future<List<DisplayableWallet>> listAllWalletsIgnoringBalances() async {
+    final out = <DisplayableWallet>[];
+
+    final walletsData = await firestore.collection(ksWalletsCollection).get();
+    final wallets = walletsData.docs.map((doc) => Wallet.fromJson(doc.data()));
+
+    for (final wallet in wallets) {
+      final organization = await organizationsService
+          .getOrganizationWithId(wallet.organizationId);
+
+      out.add(DisplayableWallet(
+        organization: organization,
+        data: wallet,
+        balance: 0,
+      ));
     }
 
     return out;

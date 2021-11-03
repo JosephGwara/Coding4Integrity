@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:wallets/models/models.dart';
+import 'package:wallets/views/confirm_payment/confirm_payment_view.dart';
 import 'package:wallets/views/create_organization/create_organization_view.dart';
 import 'package:wallets/views/create_wallet/create_wallet_view.dart';
 import 'package:wallets/views/home/home_view.dart';
 import 'package:wallets/views/select_organization/select_organization_view.dart';
+import 'package:wallets/views/select_recepient/select_recepient_view.dart';
 import 'package:wallets/views/sign_in/sign_in_view.dart';
 import 'package:wallets/views/sign_up/sign_up_view.dart';
 import 'package:wallets/views/startup/startup_view.dart';
@@ -21,6 +23,8 @@ class Routes {
   static const createWalletView = 'createWalletView';
   static const walletDetailsView = 'walletDetailsView';
   static const verifyWalletView = 'verifyWalletView';
+  static const selectRecepientView = 'selectRecepientView';
+  static const confirmPaymentView = 'confirmPaymentView';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -80,6 +84,20 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         settings: settings,
         viewToShow: WalletDetailsView(
           wallet: settings.arguments as DisplayableWallet,
+        ),
+      );
+
+    case Routes.selectRecepientView:
+      return _getPageRoute(
+        settings: settings,
+        viewToShow: SelectRecepientView(),
+      );
+
+    case Routes.confirmPaymentView:
+      return _getPageRoute(
+        settings: settings,
+        viewToShow: ConfirmPaymentView(
+          recepient: settings.arguments as DisplayableWallet,
         ),
       );
 

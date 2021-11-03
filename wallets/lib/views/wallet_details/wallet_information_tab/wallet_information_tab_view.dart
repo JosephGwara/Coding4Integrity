@@ -40,7 +40,7 @@ class WalletInformationTabView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Owner"),
-                    Text(wallet.organizationName),
+                    Text(wallet.organization.name),
                   ],
                 ),
                 Divider(),

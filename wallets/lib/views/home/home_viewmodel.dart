@@ -12,6 +12,7 @@ abstract class HomeViewModel extends BaseViewModel implements ListingViewModel {
   Future<void> init();
   Future<void> createNewWallet();
   Future<void> openWallet(DisplayableWallet wallet);
+  Future<void> initiatePayment();
 
   static makeInstance() => _HomeViewModel();
 }
@@ -75,5 +76,10 @@ class _HomeViewModel extends HomeViewModel {
   @override
   Future<void> retryFetch() {
     return _fetchWallets();
+  }
+
+  @override
+  Future<void> initiatePayment() async {
+    return navigationService.navigateTo(Routes.selectRecepientView);
   }
 }

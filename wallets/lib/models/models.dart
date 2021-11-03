@@ -18,7 +18,7 @@ class Wallet with _$Wallet {
 @freezed
 class DisplayableWallet with _$DisplayableWallet {
   factory DisplayableWallet({
-    required String organizationName,
+    required Organization organization,
     required Wallet data,
     required double balance,
   }) = _DisplayableWallet;

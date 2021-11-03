@@ -213,11 +213,11 @@ class _$DisplayableWalletTearOff {
   const _$DisplayableWalletTearOff();
 
   _DisplayableWallet call(
-      {required String organizationName,
+      {required Organization organization,
       required Wallet data,
       required double balance}) {
     return _DisplayableWallet(
-      organizationName: organizationName,
+      organization: organization,
       data: data,
       balance: balance,
     );
@@ -229,7 +229,7 @@ const $DisplayableWallet = _$DisplayableWalletTearOff();
 
 /// @nodoc
 mixin _$DisplayableWallet {
-  String get organizationName => throw _privateConstructorUsedError;
+  Organization get organization => throw _privateConstructorUsedError;
   Wallet get data => throw _privateConstructorUsedError;
   double get balance => throw _privateConstructorUsedError;
 
@@ -243,8 +243,9 @@ abstract class $DisplayableWalletCopyWith<$Res> {
   factory $DisplayableWalletCopyWith(
           DisplayableWallet value, $Res Function(DisplayableWallet) then) =
       _$DisplayableWalletCopyWithImpl<$Res>;
-  $Res call({String organizationName, Wallet data, double balance});
+  $Res call({Organization organization, Wallet data, double balance});
 
+  $OrganizationCopyWith<$Res> get organization;
   $WalletCopyWith<$Res> get data;
 }
 
@@ -259,15 +260,15 @@ class _$DisplayableWalletCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? organizationName = freezed,
+    Object? organization = freezed,
     Object? data = freezed,
     Object? balance = freezed,
   }) {
     return _then(_value.copyWith(
-      organizationName: organizationName == freezed
-          ? _value.organizationName
-          : organizationName // ignore: cast_nullable_to_non_nullable
-              as String,
+      organization: organization == freezed
+          ? _value.organization
+          : organization // ignore: cast_nullable_to_non_nullable
+              as Organization,
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -277,6 +278,13 @@ class _$DisplayableWalletCopyWithImpl<$Res>
           : balance // ignore: cast_nullable_to_non_nullable
               as double,
     ));
+  }
+
+  @override
+  $OrganizationCopyWith<$Res> get organization {
+    return $OrganizationCopyWith<$Res>(_value.organization, (value) {
+      return _then(_value.copyWith(organization: value));
+    });
   }
 
   @override
@@ -294,8 +302,10 @@ abstract class _$DisplayableWalletCopyWith<$Res>
           _DisplayableWallet value, $Res Function(_DisplayableWallet) then) =
       __$DisplayableWalletCopyWithImpl<$Res>;
   @override
-  $Res call({String organizationName, Wallet data, double balance});
+  $Res call({Organization organization, Wallet data, double balance});
 
+  @override
+  $OrganizationCopyWith<$Res> get organization;
   @override
   $WalletCopyWith<$Res> get data;
 }
@@ -313,15 +323,15 @@ class __$DisplayableWalletCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? organizationName = freezed,
+    Object? organization = freezed,
     Object? data = freezed,
     Object? balance = freezed,
   }) {
     return _then(_DisplayableWallet(
-      organizationName: organizationName == freezed
-          ? _value.organizationName
-          : organizationName // ignore: cast_nullable_to_non_nullable
-              as String,
+      organization: organization == freezed
+          ? _value.organization
+          : organization // ignore: cast_nullable_to_non_nullable
+              as Organization,
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -340,12 +350,10 @@ class _$_DisplayableWallet
     with DiagnosticableTreeMixin
     implements _DisplayableWallet {
   _$_DisplayableWallet(
-      {required this.organizationName,
-      required this.data,
-      required this.balance});
+      {required this.organization, required this.data, required this.balance});
 
   @override
-  final String organizationName;
+  final Organization organization;
   @override
   final Wallet data;
   @override
@@ -353,7 +361,7 @@ class _$_DisplayableWallet
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DisplayableWallet(organizationName: $organizationName, data: $data, balance: $balance)';
+    return 'DisplayableWallet(organization: $organization, data: $data, balance: $balance)';
   }
 
   @override
@@ -361,7 +369,7 @@ class _$_DisplayableWallet
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'DisplayableWallet'))
-      ..add(DiagnosticsProperty('organizationName', organizationName))
+      ..add(DiagnosticsProperty('organization', organization))
       ..add(DiagnosticsProperty('data', data))
       ..add(DiagnosticsProperty('balance', balance));
   }
@@ -371,14 +379,14 @@ class _$_DisplayableWallet
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DisplayableWallet &&
-            (identical(other.organizationName, organizationName) ||
-                other.organizationName == organizationName) &&
+            (identical(other.organization, organization) ||
+                other.organization == organization) &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.balance, balance) || other.balance == balance));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, organizationName, data, balance);
+  int get hashCode => Object.hash(runtimeType, organization, data, balance);
 
   @JsonKey(ignore: true)
   @override
@@ -388,12 +396,12 @@ class _$_DisplayableWallet
 
 abstract class _DisplayableWallet implements DisplayableWallet {
   factory _DisplayableWallet(
-      {required String organizationName,
+      {required Organization organization,
       required Wallet data,
       required double balance}) = _$_DisplayableWallet;
 
   @override
-  String get organizationName;
+  Organization get organization;
   @override
   Wallet get data;
   @override
